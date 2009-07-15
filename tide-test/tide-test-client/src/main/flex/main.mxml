@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="100%" 
+	xmlns:test="org.granite.tide.test.client.view.components.*"
+	height="100%" preinitialize="ApplicationController.preinitialize()" creationComplete="init()">
+	
+	<mx:Metadata>
+		[Name("mainAppUI")]
+	</mx:Metadata>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.skins.halo.ButtonBarButtonSkin;
+			import mx.collections.XMLListCollection;
+			import mx.events.MenuEvent;
+			import mx.containers.ApplicationControlBar;
+			import org.granite.tide.Tide;
+			import org.granite.tide.test.client.controller.ApplicationController;
+			import org.granite.tide.test.client.event.LoggedInEvent;
+			import org.granite.tide.events.TideFaultEvent;
+			import org.granite.tide.spring.Identity;
+			import org.granite.tide.events.TideResultEvent;
+			import org.granite.events.SecurityEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import org.granite.tide.spring.Spring;
+			import org.granite.tide.spring.Context;
+			import flash.events.MouseEvent;
+			import mx.controls.Alert;
+			import mx.rpc.remoting.mxml.Operation;
+			
+			public static const LOGIN : Number = 0;
+			public static const MAIN : Number =	1;
+			
+			public static const DATE_MSG : Number = 0;
+			public static const NAME_MSG : Number =	1;
+			
+			[Bindable] [In]
+			public var identity:Identity;
+			
+			[Bindable]
+			public var loginMessage:String = "";
+			
+			[Bindable]
+			public var loggedIn:Boolean = false;
+			
+			[Bindable]
+            		private var message:String;
+         
+			public function init():void {
+				ApplicationController.init();
+				
+				if (identity.loggedIn) {
+					this.bodyStack.selectedIndex=main.MAIN;
+				}
+				
+			}
+			
+			
+		]]>
+	</mx:Script>
+	
+	
+	<mx:DateFormatter id="dateFormatter" formatString="EEEE, MMMM DD, YYYY"/>
+	
+			
+	<mx:HBox id="welcomeStack">
+		<mx:Image source="@Embed('../resources/images/logo.png')" right="10" bottom="10" id="logo"/>				
+		<mx:Label text="{dateFormatter.format(new Date ())}" selectable="true"/>	
+		<mx:Text id="nameTxt" fontWeight="bold" text="{identity.username}"/>
+	</mx:HBox>
+
+	<mx:HBox top="70" horizontalAlign="center" width="100%">
+		<mx:ViewStack id="bodyStack" resizeToContent="true">
+			<test:Login id="loginView"/>
+			<mx:Panel label="Home" id="mainView" width="100%" height="100%">
+				<mx:Label text="It works !" />
+			</mx:Panel>
+		</mx:ViewStack>
+	</mx:HBox>
+
+</mx:Application>
