@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.graniteds</groupId>
+		<artifactId>tide-test-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.graniteds</groupId>
+	<artifactId>tide-test-client</artifactId>
+	<packaging>swf</packaging>
+	<name>Tide Test Client</name>
+
+	<build>
+		<finalName>Index</finalName>
+		<sourceDirectory>src/main/flex</sourceDirectory>
+		<plugins>
+			<plugin>
+			        <groupId>org.sonatype.flexmojos</groupId>
+			        <artifactId>flexmojos-maven-plugin</artifactId>
+			        <version>${flexmojos.version}</version>
+			        <extensions>true</extensions>
+			        <configuration>
+				        <contextRoot>tide-test-server</contextRoot>
+			            <targetPlayer>${flex.target.player.version}</targetPlayer>
+			            <testFailureIgnore>true</testFailureIgnore>
+			            <services>../tide-test-server/src/main/webapp/WEB-INF/flex/services-config.xml</services>
+			        </configuration>
+	            	</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.graniteds</groupId>
+			<artifactId>granite-swc</artifactId>
+			<version>${graniteds.version}</version>
+			<type>swc</type>
+		</dependency>
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>playerglobal</artifactId>
+			<version>9-${flex.version}</version>
+			<type>swc</type>
+		</dependency>
+		<dependency>
+			<groupId>com.adobe.flex.framework</groupId>
+			<artifactId>flex-framework</artifactId>
+			<version>${flex.version}</version>
+			<type>pom</type>
+		</dependency>
+
+	</dependencies>
+
+</project>
