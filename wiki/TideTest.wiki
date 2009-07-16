@@ -1,0 +1,8 @@
+#summary Tide Test Sample
+
+= How make Tide Test Sample working =
+
+ * svn checkout http://graniteds-samples.googlecode.com/svn/trunk/tide-test tide-test
+ * You must have Eclipse 3.3+ (J2EE distribution recommanded, m2eclipse 0.9.8+ and Flex Builder installed
+ * Run Eclipse, and go to menu File -> Import -> General -> *Maven project* and select only tide-test-parent and tide-test-server. tide-test-client should be uncheked as it will be import as a Flex Builder project, not a Maven project
+ * Now, import tide-test-client by going to File -> Import -> General -> *Existing project in workspace*
