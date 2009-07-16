@@ -7,12 +7,12 @@
  * Run Eclipse, and go to menu File -> Import -> General -> *Maven project* and select only tide-test-parent and tide-test-server. tide-test-client should be uncheked as it will be import as a Flex Builder project, not a Maven project
  * Now, import tide-test-client by going to File -> Import -> General -> *Existing project in workspace*
 
-= Compile the project =
+= Compile and run the project =
 
 The project can be compiled by Maven or un Eclipse. Maven build is usually used in a continuous integration build, and Eclipse build is usually used during developpment since it is far more efficient.
 
-Compile with Maven : go to tide-test directory and run mvn clean install
-
-Compile with Eclipse : nothing to do the project should compile automatically
-
-= Run the project =
+== With Maven ==
+ * Go to tide-test directory and run mvn clean install
+ * To run it, go to server view, create a tomcat server without adding any webapp in it, double click on the server in the server view, select the module tab, and click on "Add an external web amodule" and configure the tide-test/tide-test-server/target/tide-test-server directory as doc base.
+ * Run the tomcat server
+ * The project should be available in your browser at the url http://localhost:8080/tide-test-server/tide-test-client-0.0.1-SNAPSHOT.swf
