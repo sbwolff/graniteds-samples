@@ -27,6 +27,20 @@
 			            <targetPlayer>${flex.target.player.version}</targetPlayer>
 			            <testFailureIgnore>true</testFailureIgnore>
 			            <services>../tide-test-server/src/main/webapp/WEB-INF/flex/services-config.xml</services>
+						<keepAs3Metadatas>
+							<keepAs3Metadata>Bindable</keepAs3Metadata>
+							<keepAs3Metadata>Managed</keepAs3Metadata>
+							<keepAs3Metadata>ChangeEvent</keepAs3Metadata>
+							<keepAs3Metadata>NonCommittingChangeEvent</keepAs3Metadata>
+							<keepAs3Metadata>Transient</keepAs3Metadata>
+							<keepAs3Metadata>Name</keepAs3Metadata>
+							<keepAs3Metadata>In</keepAs3Metadata>
+							<keepAs3Metadata>Out</keepAs3Metadata>
+							<keepAs3Metadata>Observer</keepAs3Metadata>
+							<keepAs3Metadata>Destroy</keepAs3Metadata>
+							<keepAs3Metadata>Version</keepAs3Metadata>
+							<keepAs3Metadata>Event</keepAs3Metadata>
+						</keepAs3Metadatas>
 			        </configuration>
 	            	</plugin>
 		</plugins>
