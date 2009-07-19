@@ -4,6 +4,7 @@ package org.granite.tide.test.client.controller
 	
 	import org.granite.tide.events.TideResultEvent;
 	import org.granite.tide.spring.Context;
+	import org.granite.tide.spring.Spring;
 	import org.granite.tide.test.client.event.LoggedInEvent;
 	
 	[Name("albumController")]
@@ -11,16 +12,19 @@ package org.granite.tide.test.client.controller
 	public class AlbumController
 	{
 		[In]
-		public var tideContext:Context;
+		public var albumService:Object;
+
 		
 		[In]
         public var albumUI:Object;
 		
 		[Out]
 		public var albums:ArrayCollection;
+		
+		
 			
 		public function getAllAlbums():void {
-		  tideContext.albumService.getAllAlbums(getAllAlbumsResult);
+		  albumService.getAllAlbums(getAllAlbumsResult);
 		}
 		
 		private function getAllAlbumsResult(event:TideResultEvent):void {
