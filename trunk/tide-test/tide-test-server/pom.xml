@@ -12,6 +12,7 @@
 	<artifactId>tide-test-server</artifactId>
 	<packaging>war</packaging>
 	<name>Tide Test Server</name>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<build>
 		<finalName>tide-test-server</finalName>
