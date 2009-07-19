@@ -18,17 +18,19 @@
 		<finalName>tide-test-server</finalName>
 		<plugins>
 			<plugin>
-			      <groupId>org.sonatype.flexmojos</groupId>
-			      <artifactId>flexmojos-maven-plugin</artifactId>
-			      <version>${flexmojos.version}</version>
-			      <executions>
-				<execution>
-				  <goals>
-				    <goal>copy-flex-resources</goal>
-				  </goals>
-				</execution>
-			      </executions>
-			    </plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                	<configuration>
+                    	<webResources>
+                        	<resource>
+                            	<directory>${basedir}/../tide-test-client/target</directory>
+									<includes>
+                                    	<include>main.swf</include>
+                                    </includes>
+                           	</resource>
+                        </webResources>
+                    </configuration>
+               </plugin>
 		</plugins>
 	</build>
 

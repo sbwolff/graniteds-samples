@@ -72,9 +72,7 @@
 	<mx:HBox top="70" horizontalAlign="center" width="100%">
 		<mx:ViewStack id="bodyStack" resizeToContent="true">
 			<test:Login id="loginView"/>
-			<mx:Panel label="Home" id="mainView" width="100%" height="100%">
-				<mx:Label text="It works !" />
-			</mx:Panel>
+			<test:Main id="mainView"/>
 		</mx:ViewStack>
 	</mx:HBox>
 
