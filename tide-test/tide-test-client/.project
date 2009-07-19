@@ -25,7 +25,7 @@
 		<link>
 			<name>bin-debug</name>
 			<type>2</type>
-			<location>D:/Workspace/maps/tide-test-parent/tide-test-server/target/tide-test-server</location>
+			<location>D:/Workspace/graniteds-samples/tide-test/tide-test-server/target/tide-test-server</location>
 		</link>
 	</linkedResources>
 </projectDescription>

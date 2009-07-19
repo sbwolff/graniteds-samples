@@ -15,7 +15,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<build>
-		<finalName>Index</finalName>
+		<finalName>main</finalName>
 		<sourceDirectory>src/main/flex</sourceDirectory>
 		<plugins>
 			<plugin>
@@ -23,7 +23,7 @@
 			        <artifactId>flexmojos-maven-plugin</artifactId>
 			        <version>${flexmojos.version}</version>
 			        <extensions>true</extensions>
-			        <configuration>
+			        <configuration>        
 				        <contextRoot>tide-test-server</contextRoot>
 			            <targetPlayer>${flex.target.player.version}</targetPlayer>
 			            <testFailureIgnore>true</testFailureIgnore>
