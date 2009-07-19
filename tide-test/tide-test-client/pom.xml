@@ -12,6 +12,7 @@
 	<artifactId>tide-test-client</artifactId>
 	<packaging>swf</packaging>
 	<name>Tide Test Client</name>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<build>
 		<finalName>Index</finalName>
