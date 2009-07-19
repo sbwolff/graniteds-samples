@@ -34,6 +34,9 @@
 			public static const DATE_MSG : Number = 0;
 			public static const NAME_MSG : Number =	1;
 			
+			[Bindable]
+ 			private var tideContext:Context = Spring.getInstance().getSpringContext();
+			
 			[Bindable] [In]
 			public var identity:Identity;
 			
@@ -48,6 +51,11 @@
          
 			public function init():void {
 				ApplicationController.init();
+				
+				tideContext.mainAppUI = this;
+				tideContext.loginUI = this.loginView;
+				tideContext.albumUI = this.albumView;
+
 				
 				if (identity.loggedIn) {
 					this.bodyStack.selectedIndex=main.ALBUM;
