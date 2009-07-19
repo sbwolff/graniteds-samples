@@ -13,6 +13,6 @@ The project can be compiled by Maven or un Eclipse. Maven build is usually used 
 
 == With Maven ==
  * Go to tide-test directory and run mvn clean install
- * To run it, go to server view, create a tomcat server without adding any webapp in it, double click on the server in the server view, select the module tab, and click on "Add an external web amodule" and configure the tide-test/tide-test-server/target/tide-test-server directory as doc base.
+ * To run it, go to server view, create a tomcat server without adding any webapp in it, double click on the server in the server view, select the module tab, and click on "Add an external web amodule" and configure the tide-test/tide-test-server/target/tide-test-server directory as doc base *and /tide-test-server as path*.
  * Run the tomcat server
  * The project should be available in your browser at the url http://localhost:8080/tide-test-server/tide-test-client-0.0.1-SNAPSHOT.swf
