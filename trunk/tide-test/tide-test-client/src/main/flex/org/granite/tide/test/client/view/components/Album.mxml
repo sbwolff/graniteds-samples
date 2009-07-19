@@ -2,10 +2,13 @@
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
 	
 	<mx:Metadata>
-		[Name("mainUI")]
+		[Name("albumUI")]
 	</mx:Metadata>
 	
-	<mx:Panel label="Home" id="mainView" width="100%" height="100%">
-		<mx:Label text="It works very well !" />
+	<mx:Panel label="Home" id="albumView" width="100%" height="100%">
+		<mx:Label text="Albums :" />
+		<mx:List id="albumList">
+		
+		</mx:List>
 	</mx:Panel>
 </mx:HBox>
