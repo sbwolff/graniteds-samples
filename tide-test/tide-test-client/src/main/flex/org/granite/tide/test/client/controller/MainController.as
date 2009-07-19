@@ -16,7 +16,7 @@ package org.granite.tide.test.client.controller
 
 		[Observer]
 		public function eventHandler(event:LoggedInEvent):void {
-		   	this.mainAppUI.bodyStack.selectedIndex = main.MAIN;
+		   	this.mainAppUI.bodyStack.selectedIndex = main.ALBUM;
 		}
 	     
 	}

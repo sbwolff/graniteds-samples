@@ -29,7 +29,7 @@
 			import mx.rpc.remoting.mxml.Operation;
 			
 			public static const LOGIN : Number = 0;
-			public static const MAIN : Number =	1;
+			public static const ALBUM : Number =	1;
 			
 			public static const DATE_MSG : Number = 0;
 			public static const NAME_MSG : Number =	1;
@@ -50,7 +50,7 @@
 				ApplicationController.init();
 				
 				if (identity.loggedIn) {
-					this.bodyStack.selectedIndex=main.MAIN;
+					this.bodyStack.selectedIndex=main.ALBUM;
 				}
 				
 			}
