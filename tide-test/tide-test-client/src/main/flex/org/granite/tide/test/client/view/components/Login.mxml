@@ -38,7 +38,7 @@
 				this.login();
 			}
 			
-			private function login () {
+			private function login ():void {
 				var validatorErrorArray:Array = Validator.validateAll([usernameVal,passwordVal]);
                 var isValidForm:Boolean = validatorErrorArray.length == 0;
                 

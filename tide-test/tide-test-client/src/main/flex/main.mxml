@@ -72,7 +72,7 @@
 	<mx:HBox top="70" horizontalAlign="center" width="100%">
 		<mx:ViewStack id="bodyStack" resizeToContent="true">
 			<test:Login id="loginView"/>
-			<test:Main id="mainView"/>
+			<test:Album id="albumView"/>
 		</mx:ViewStack>
 	</mx:HBox>
 
