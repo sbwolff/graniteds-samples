@@ -5,10 +5,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class Track {
 	
-	@Id
+	//@Id
 	private long id;
 	
 	private int orderNum;

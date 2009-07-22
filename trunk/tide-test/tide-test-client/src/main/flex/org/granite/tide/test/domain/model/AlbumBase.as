@@ -11,33 +11,15 @@ package org.granite.tide.test.domain.model {
     import flash.utils.IDataOutput;
     import flash.utils.IExternalizable;
     import mx.collections.ListCollectionView;
-    import org.granite.collections.IPersistentCollection;
-    import org.granite.meta;
-
-    use namespace meta;
 
     [Bindable]
     public class AlbumBase implements IExternalizable {
-
-        private var __initialized:Boolean = true;
-        private var __detachedState:String = null;
 
         private var _albumTracks:ListCollectionView;
         private var _duration:Duration;
         private var _id:Number;
         private var _name:String;
         private var _year:int;
-
-        meta function isInitialized(name:String = null):Boolean {
-            if (!name)
-                return __initialized;
-
-            var property:* = this[name];
-            return (
-                (!(property is Album) || (property as Album).meta::isInitialized()) &&
-                (!(property is IPersistentCollection) || (property as IPersistentCollection).isInitialized())
-            );
-        }
 
         public function set albumTracks(value:ListCollectionView):void {
             _albumTracks = value;
@@ -75,33 +57,19 @@ package org.granite.tide.test.domain.model {
         }
 
         public function readExternal(input:IDataInput):void {
-            __initialized = input.readObject() as Boolean;
-            __detachedState = input.readObject() as String;
-            if (meta::isInitialized()) {
-                _albumTracks = input.readObject() as ListCollectionView;
-                _duration = input.readObject() as Duration;
-                _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
-                _name = input.readObject() as String;
-                _year = input.readObject() as int;
-            }
-            else {
-                _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
-            }
+            _albumTracks = input.readObject() as ListCollectionView;
+            _duration = input.readObject() as Duration;
+            _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
+            _name = input.readObject() as String;
+            _year = input.readObject() as int;
         }
 
         public function writeExternal(output:IDataOutput):void {
-            output.writeObject(__initialized);
-            output.writeObject(__detachedState);
-            if (meta::isInitialized()) {
-                output.writeObject(_albumTracks);
-                output.writeObject(_duration);
-                output.writeObject(_id);
-                output.writeObject(_name);
-                output.writeObject(_year);
-            }
-            else {
-                output.writeObject(_id);
-            }
+            output.writeObject(_albumTracks);
+            output.writeObject(_duration);
+            output.writeObject(_id);
+            output.writeObject(_name);
+            output.writeObject(_year);
         }
     }
 }

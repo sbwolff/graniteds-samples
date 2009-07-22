@@ -12,20 +12,18 @@ import org.springframework.stereotype.Service;
 public class AlbumManagerImpl implements AlbumManager {
 
 	public Album createAlbum(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Album(0, "tutu", 1982, new Duration(0,0,0));
 	}
 
 	public Album getAlbum(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Album(0, "tete", 1982, new Duration(0,0,0));
 	}
 
 	public List<Album> getAllAlbums() {
 		List<Album> albums = new ArrayList<Album>();
-		albums.add(new Album("toto", 1981, new Duration(0,0,0)));
-		albums.add(new Album("titi", 1982, new Duration(0,0,0)));
-		albums.add(new Album("tata", 1983, new Duration(0,0,0)));
+		albums.add(new Album(0, "titi", 1982, new Duration(0,0,0)));
+		albums.add(new Album(1, "toto", 1981, new Duration(0,0,0)));
+		albums.add(new Album(2, "tata", 1983, new Duration(0,0,0)));
 		return albums;
 	}
 

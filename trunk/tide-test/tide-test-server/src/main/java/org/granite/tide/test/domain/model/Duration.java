@@ -3,8 +3,8 @@ package org.granite.tide.test.domain.model;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 
-@Entity
-@Embeddable
+//@Entity
+//@Embeddable
 public class Duration {
 	
 	private int hours;
