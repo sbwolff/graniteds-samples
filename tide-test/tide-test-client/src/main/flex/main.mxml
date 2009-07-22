@@ -23,7 +23,7 @@
 			[Bindable]
  			private var tideContext:Context = Spring.getInstance().getSpringContext();
 			
-			/** The In annotation lonk identity to the tide context */
+			/** The In annotation link identity to the tide context */
 			[Bindable] [In]
 			public var identity:Identity;
 			

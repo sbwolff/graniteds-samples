@@ -13,6 +13,7 @@ package org.granite.tide.test.client.controller
 	public class AlbumController
 	{
 		[In]
+		// The In annotation link identity to the tide context
 		public var albumService:Object;
 
 		// Inclusion of Album class in order to get it included in the SWF
@@ -22,6 +23,7 @@ package org.granite.tide.test.client.controller
 		[In]
         public var albumUI:Object;
 		
+		// [Out] annotation allow to use albums = event.result instead of tideContext.albums = event.result 
 		[In] [Out]
 		public var albums:ArrayCollection;
 		
