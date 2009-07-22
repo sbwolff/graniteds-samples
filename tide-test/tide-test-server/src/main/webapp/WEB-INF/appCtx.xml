@@ -11,7 +11,7 @@
            default-autowire="byName"
     default-lazy-init="true">
 		
-	<context:component-scan base-package="org.graniteds.tide.test" />
+	<context:component-scan base-package="org.granite.tide.test" />
 	
 	<bean id="identity" class="org.granite.tide.spring.security.Identity"/>
   
