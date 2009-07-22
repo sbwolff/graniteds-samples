@@ -23,7 +23,8 @@
 			        <artifactId>flexmojos-maven-plugin</artifactId>
 			        <version>${flexmojos.version}</version>
 			        <extensions>true</extensions>
-			        <configuration>        
+			        <configuration>    
+			        	<debug>true</debug>    
 				        <contextRoot>tide-test-server</contextRoot>
 			            <targetPlayer>${flex.target.player.version}</targetPlayer>
 			            <testFailureIgnore>true</testFailureIgnore>
