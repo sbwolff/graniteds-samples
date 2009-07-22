@@ -3,10 +3,10 @@ package org.granite.tide.test.domain.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class Artist {
 	
-	@Id
+	//@Id
 	private long id;
 	
 	private String name;

@@ -10,31 +10,13 @@ package org.granite.tide.test.domain.model {
     import flash.utils.IDataInput;
     import flash.utils.IDataOutput;
     import flash.utils.IExternalizable;
-    import org.granite.collections.IPersistentCollection;
-    import org.granite.meta;
-
-    use namespace meta;
 
     [Bindable]
     public class ArtistBase implements IExternalizable {
 
-        private var __initialized:Boolean = true;
-        private var __detachedState:String = null;
-
         private var _forName:String;
         private var _id:Number;
         private var _name:String;
-
-        meta function isInitialized(name:String = null):Boolean {
-            if (!name)
-                return __initialized;
-
-            var property:* = this[name];
-            return (
-                (!(property is Artist) || (property as Artist).meta::isInitialized()) &&
-                (!(property is IPersistentCollection) || (property as IPersistentCollection).isInitialized())
-            );
-        }
 
         public function set forName(value:String):void {
             _forName = value;
@@ -58,29 +40,15 @@ package org.granite.tide.test.domain.model {
         }
 
         public function readExternal(input:IDataInput):void {
-            __initialized = input.readObject() as Boolean;
-            __detachedState = input.readObject() as String;
-            if (meta::isInitialized()) {
-                _forName = input.readObject() as String;
-                _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
-                _name = input.readObject() as String;
-            }
-            else {
-                _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
-            }
+            _forName = input.readObject() as String;
+            _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
+            _name = input.readObject() as String;
         }
 
         public function writeExternal(output:IDataOutput):void {
-            output.writeObject(__initialized);
-            output.writeObject(__detachedState);
-            if (meta::isInitialized()) {
-                output.writeObject(_forName);
-                output.writeObject(_id);
-                output.writeObject(_name);
-            }
-            else {
-                output.writeObject(_id);
-            }
+            output.writeObject(_forName);
+            output.writeObject(_id);
+            output.writeObject(_name);
         }
     }
 }

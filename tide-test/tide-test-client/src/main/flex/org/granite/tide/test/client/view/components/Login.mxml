@@ -14,38 +14,38 @@
 		import org.granite.tide.test.client.event.LoggedInEvent;
 		import org.granite.tide.test.client.event.LoginEvent;
 	       
-	       [Bindable]
-	       public var message:String = null;
-	       
-	       public function init():void {
-				this.password.addEventListener(FlexEvent.ENTER,onPasswordEnter);
-				this.loginBtn.addEventListener(MouseEvent.CLICK,onLoginClick);
-				this.loginBtn.addEventListener(KeyboardEvent.KEY_DOWN,checkKey);
-				focusManager.setFocus(username);
-			}
-			
-			private function checkKey(event:KeyboardEvent):void
-            {
-                if(event.charCode == 13)
-                       this.login();
+       [Bindable]
+       public var message:String = null;
+       
+       public function init():void {
+			this.password.addEventListener(FlexEvent.ENTER,onPasswordEnter);
+			this.loginBtn.addEventListener(MouseEvent.CLICK,onLoginClick);
+			this.loginBtn.addEventListener(KeyboardEvent.KEY_DOWN,checkKey);
+			focusManager.setFocus(username);
+		}
+		
+		private function checkKey(event:KeyboardEvent):void
+        {
+            if(event.charCode == 13)
+                   this.login();
+        }
+		
+		public function onPasswordEnter(e:FlexEvent):void {
+			dispatchEvent(new LoginEvent());
+		}
+		
+		public function onLoginClick(e:MouseEvent):void {
+			this.login();
+		}
+		
+		private function login ():void {
+			var validatorErrorArray:Array = Validator.validateAll([usernameVal,passwordVal]);
+            var isValidForm:Boolean = validatorErrorArray.length == 0;
+            
+            if (isValidForm) {
+                dispatchEvent(new LoginEvent());
             }
-			
-			public function onPasswordEnter(e:FlexEvent):void {
-				dispatchEvent(new LoginEvent());
-			}
-			
-			public function onLoginClick(e:MouseEvent):void {
-				this.login();
-			}
-			
-			private function login ():void {
-				var validatorErrorArray:Array = Validator.validateAll([usernameVal,passwordVal]);
-                var isValidForm:Boolean = validatorErrorArray.length == 0;
-                
-                if (isValidForm) {
-                    dispatchEvent(new LoginEvent());
-                }
-			}
+		}
 
 
 			

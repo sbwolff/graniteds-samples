@@ -1,13 +1,11 @@
 package org.granite.tide.test.client.controller
 {
 	import mx.collections.ArrayCollection;
-	
-	import org.granite.tide.events.TideResultEvent;
-	import org.granite.tide.spring.Context;
-	import org.granite.tide.spring.Spring;
-	import org.granite.tide.test.client.event.LoggedInEvent;
 	import mx.logging.Log;
 	import mx.logging.targets.TraceTarget;
+	
+	import org.granite.tide.events.TideResultEvent;
+	import org.granite.tide.test.client.event.LoggedInEvent;
 	import org.granite.tide.test.domain.model.Album;
 	
 	[Name("albumController")]
@@ -24,7 +22,7 @@ package org.granite.tide.test.client.controller
 		[In]
         public var albumUI:Object;
 		
-		[Out]
+		[In] [Out]
 		public var albums:ArrayCollection;
 		
 		public function init():void {
@@ -37,10 +35,19 @@ package org.granite.tide.test.client.controller
 		  albumService.getAllAlbums(getAllAlbumsResult);
 		}
 		
+		public function getAlbum():void {
+		  albumService.getAlbum(0,getAlbumResult);
+		}
+		
 		private function getAllAlbumsResult(event:TideResultEvent):void {
 		  trace("getAllAlbumsResult");
 		  albums = event.result as ArrayCollection;
-		  albumUI.albumList.data = albums;
+		}
+		
+		private function getAlbumResult(event:TideResultEvent):void {
+		  trace("getAlbumResult");
+		  album = event.result as Album;
+		  albumUI.albumLabel.text = album.name;
 		}
 		
 		[Observer]

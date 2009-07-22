@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flexProperties flexServerType="2" serverContextRoot="tide-test-server" serverRoot="/home/bouiaw/workspace/tide-test-parent/tide-test-server/target/tide-test-server" serverRootURL="http://localhost:8080/tide-test-server" toolCompile="true" useServerFlexSDK="false" version="1"/>
+<flexProperties flexServerType="2" serverContextRoot="/tide-test-server" serverRoot="D:/Workspace/graniteds-samples/tide-test/tide-test-server/target/tide-test-server" serverRootURL="http://localhost:8080/tide-test-server" toolCompile="true" useServerFlexSDK="false" version="1"/>

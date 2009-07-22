@@ -9,24 +9,10 @@
 	
 	<mx:Script>
 		<![CDATA[
-			import mx.skins.halo.ButtonBarButtonSkin;
-			import mx.collections.XMLListCollection;
-			import mx.events.MenuEvent;
-			import mx.containers.ApplicationControlBar;
-			import org.granite.tide.Tide;
-			import org.granite.tide.test.client.controller.ApplicationController;
-			import org.granite.tide.test.client.event.LoggedInEvent;
-			import org.granite.tide.events.TideFaultEvent;
-			import org.granite.tide.spring.Identity;
-			import org.granite.tide.events.TideResultEvent;
-			import org.granite.events.SecurityEvent;
-			import mx.rpc.events.FaultEvent;
-			import mx.rpc.events.ResultEvent;
 			import org.granite.tide.spring.Spring;
 			import org.granite.tide.spring.Context;
-			import flash.events.MouseEvent;
-			import mx.controls.Alert;
-			import mx.rpc.remoting.mxml.Operation;
+			import org.granite.tide.spring.Identity;
+			import org.granite.tide.test.client.controller.ApplicationController;
 			
 			public static const LOGIN : Number = 0;
 			public static const ALBUM : Number =	1;
@@ -37,6 +23,7 @@
 			[Bindable]
  			private var tideContext:Context = Spring.getInstance().getSpringContext();
 			
+			/** The In annotation lonk identity to the tide context */
 			[Bindable] [In]
 			public var identity:Identity;
 			
@@ -45,31 +32,23 @@
 			
 			[Bindable]
 			public var loggedIn:Boolean = false;
-			
-			[Bindable]
-            		private var message:String;
          
+         	/** Execute during creationComplete event as declared on the top of the file */  
 			public function init():void {
 				ApplicationController.init();
 				
 				tideContext.mainAppUI = this;
-				tideContext.loginUI = this.loginView;
-				tideContext.albumUI = this.albumView;
-
 				
 				if (identity.loggedIn) {
 					this.bodyStack.selectedIndex=main.ALBUM;
 				}
-				
 			}
-			
 			
 		]]>
 	</mx:Script>
 	
 	
 	<mx:DateFormatter id="dateFormatter" formatString="EEEE, MMMM DD, YYYY"/>
-	
 			
 	<mx:HBox id="welcomeStack">
 		<mx:Image source="@Embed('../resources/images/logo.png')" right="10" bottom="10" id="logo"/>				

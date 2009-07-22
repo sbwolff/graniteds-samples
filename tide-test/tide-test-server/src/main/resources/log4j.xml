@@ -11,4 +11,8 @@
         <priority value="INFO" />
         <appender-ref ref="console" />
     </root>
+    <category name="org.granite.messaging.webapp.AMFMessageServlet">
+      <priority value="DEBUG" />
+   </category>
+    
 </log4j:configuration>

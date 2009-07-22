@@ -5,10 +5,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class Album {
 	
-	@Id
+	//@Id
 	private long id;
 	
 	private String name;
@@ -23,8 +23,9 @@ public class Album {
 		super();
 	}
 			
-	public Album(String name, int year, Duration duration) {
+	public Album(long id, String name, int year, Duration duration) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.year = year;
 		this.duration = duration;

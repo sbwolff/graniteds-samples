@@ -11,33 +11,15 @@ package org.granite.tide.test.domain.model {
     import flash.utils.IDataOutput;
     import flash.utils.IExternalizable;
     import mx.collections.ListCollectionView;
-    import org.granite.collections.IPersistentCollection;
-    import org.granite.meta;
-
-    use namespace meta;
 
     [Bindable]
     public class TrackBase implements IExternalizable {
-
-        private var __initialized:Boolean = true;
-        private var __detachedState:String = null;
 
         private var _duration:Duration;
         private var _id:Number;
         private var _orderNum:int;
         private var _title:String;
         private var _trackArtists:ListCollectionView;
-
-        meta function isInitialized(name:String = null):Boolean {
-            if (!name)
-                return __initialized;
-
-            var property:* = this[name];
-            return (
-                (!(property is Track) || (property as Track).meta::isInitialized()) &&
-                (!(property is IPersistentCollection) || (property as IPersistentCollection).isInitialized())
-            );
-        }
 
         public function set duration(value:Duration):void {
             _duration = value;
@@ -75,33 +57,19 @@ package org.granite.tide.test.domain.model {
         }
 
         public function readExternal(input:IDataInput):void {
-            __initialized = input.readObject() as Boolean;
-            __detachedState = input.readObject() as String;
-            if (meta::isInitialized()) {
-                _duration = input.readObject() as Duration;
-                _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
-                _orderNum = input.readObject() as int;
-                _title = input.readObject() as String;
-                _trackArtists = input.readObject() as ListCollectionView;
-            }
-            else {
-                _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
-            }
+            _duration = input.readObject() as Duration;
+            _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
+            _orderNum = input.readObject() as int;
+            _title = input.readObject() as String;
+            _trackArtists = input.readObject() as ListCollectionView;
         }
 
         public function writeExternal(output:IDataOutput):void {
-            output.writeObject(__initialized);
-            output.writeObject(__detachedState);
-            if (meta::isInitialized()) {
-                output.writeObject(_duration);
-                output.writeObject(_id);
-                output.writeObject(_orderNum);
-                output.writeObject(_title);
-                output.writeObject(_trackArtists);
-            }
-            else {
-                output.writeObject(_id);
-            }
+            output.writeObject(_duration);
+            output.writeObject(_id);
+            output.writeObject(_orderNum);
+            output.writeObject(_title);
+            output.writeObject(_trackArtists);
         }
     }
 }

@@ -10,9 +10,6 @@ package org.granite.tide.test.domain.model {
     import flash.utils.IDataInput;
     import flash.utils.IDataOutput;
     import flash.utils.IExternalizable;
-    import org.granite.meta;
-
-    use namespace meta;
 
     [Bindable]
     public class DurationBase implements IExternalizable {
@@ -20,10 +17,6 @@ package org.granite.tide.test.domain.model {
         private var _hours:int;
         private var _minutes:int;
         private var _seconds:int;
-
-        meta function isInitialized(name:String = null):Boolean {
-            return true;
-        }
 
         public function set hours(value:int):void {
             _hours = value;
@@ -47,19 +40,15 @@ package org.granite.tide.test.domain.model {
         }
 
         public function readExternal(input:IDataInput):void {
-            if (meta::isInitialized()) {
-                _hours = input.readObject() as int;
-                _minutes = input.readObject() as int;
-                _seconds = input.readObject() as int;
-            }
+            _hours = input.readObject() as int;
+            _minutes = input.readObject() as int;
+            _seconds = input.readObject() as int;
         }
 
         public function writeExternal(output:IDataOutput):void {
-            if (meta::isInitialized()) {
-                output.writeObject(_hours);
-                output.writeObject(_minutes);
-                output.writeObject(_seconds);
-            }
+            output.writeObject(_hours);
+            output.writeObject(_minutes);
+            output.writeObject(_seconds);
         }
     }
 }
