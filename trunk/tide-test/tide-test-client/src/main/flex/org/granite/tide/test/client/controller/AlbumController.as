@@ -6,6 +6,9 @@ package org.granite.tide.test.client.controller
 	import org.granite.tide.spring.Context;
 	import org.granite.tide.spring.Spring;
 	import org.granite.tide.test.client.event.LoggedInEvent;
+	import mx.logging.Log;
+	import mx.logging.targets.TraceTarget;
+	import org.granite.tide.test.domain.model.Album;
 	
 	[Name("albumController")]
 	[Bindable]
@@ -14,20 +17,28 @@ package org.granite.tide.test.client.controller
 		[In]
 		public var albumService:Object;
 
-		
+		// Inclusion of Album class in order to get it included in the SWF
+		// Check http://www.graniteds.org/confluence/display/DOC/9.+Troubleshooting for more details
+		private var album:Album;
+        
 		[In]
         public var albumUI:Object;
 		
 		[Out]
 		public var albums:ArrayCollection;
 		
-		
+		public function init():void {
+            var t:TraceTarget = new TraceTarget();
+            t.filters = ["org.granite.*"];
+            Log.addTarget(t);
+        }
 			
 		public function getAllAlbums():void {
 		  albumService.getAllAlbums(getAllAlbumsResult);
 		}
 		
 		private function getAllAlbumsResult(event:TideResultEvent):void {
+		  trace("getAllAlbumsResult");
 		  albums = event.result as ArrayCollection;
 		  albumUI.albumList.data = albums;
 		}
