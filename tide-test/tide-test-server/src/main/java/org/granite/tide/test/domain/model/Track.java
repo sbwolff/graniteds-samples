@@ -2,9 +2,6 @@ package org.granite.tide.test.domain.model;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 //@Entity
 public class Track {
 	

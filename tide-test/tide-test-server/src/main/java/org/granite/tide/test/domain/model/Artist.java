@@ -1,8 +1,5 @@
 package org.granite.tide.test.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 //@Entity
 public class Artist {
 	
