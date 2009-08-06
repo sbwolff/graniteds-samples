@@ -1,11 +1,10 @@
 package org.granite.tide.test.client.controller
 {
-	import org.granite.tide.test.client.event.LoggedInEvent;
-	import org.granite.tide.test.client.event.LoginEvent;
-	
 	import org.granite.tide.events.TideFaultEvent;
 	import org.granite.tide.events.TideResultEvent;
 	import org.granite.tide.spring.Identity;
+	import org.granite.tide.test.client.event.LoggedInEvent;
+	import org.granite.tide.test.client.event.LoginEvent;
 	
 	[Name("loginController")]
 	[Bindable]

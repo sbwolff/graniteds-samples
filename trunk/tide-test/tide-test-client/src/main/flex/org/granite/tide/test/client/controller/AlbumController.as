@@ -1,12 +1,17 @@
 package org.granite.tide.test.client.controller
 {
 	import mx.collections.ArrayCollection;
+	import mx.controls.Alert;
 	import mx.logging.Log;
 	import mx.logging.targets.TraceTarget;
 	
+	import org.granite.tide.events.TideFaultEvent;
 	import org.granite.tide.events.TideResultEvent;
+	import org.granite.tide.events.TideValidatorEvent;
 	import org.granite.tide.test.client.event.LoggedInEvent;
+	import org.granite.tide.test.client.event.RemoteExceptionEvent;
 	import org.granite.tide.test.domain.model.Album;
+	import org.granite.tide.validators.InvalidValue;
 	
 	[Name("albumController")]
 	[Bindable]
@@ -30,8 +35,10 @@ package org.granite.tide.test.client.controller
 		public function init():void {
             var t:TraceTarget = new TraceTarget();
             t.filters = ["org.granite.*"];
-            Log.addTarget(t);
+            Log.addTarget(t);            
         }
+        
+        //--------------------------------------------
 			
 		public function getAllAlbums():void {
 		  albumService.getAllAlbums(getAllAlbumsResult);
@@ -52,9 +59,36 @@ package org.granite.tide.test.client.controller
 		  albumUI.albumLabel.text = album.name;
 		}
 		
+		private function helloResult(event:TideResultEvent):void {
+		    Alert.show("everything is ok");
+		}
+		private function helloFault(event:TideFaultEvent):void {
+		    Alert.show("helloFault: " + event.fault.toString());
+		}
+		
+		private function validationHandler(event:TideValidatorEvent):void {
+		    var invalidValues:Array = event.invalidValues;
+		    for each (var iv:Object in invalidValues) {
+		        var invalidValue:InvalidValue = iv as InvalidValue;
+		        Alert.show(
+		            "Invalid property: " + invalidValue.path +
+		            " on object " + invalidValue.bean
+		        );
+		    }
+		}
+		
+		//--------------------------------------------
+		// Using typed events, see : http://www.graniteds.org/confluence/display/DOC20/6.+Flex+3+Client+Framework
+		
 		[Observer]
 		public function eventHandler(event:LoggedInEvent):void {
 		   	getAllAlbums();
+		}
+		
+		[Observer]
+		public function getRemoteException(event:RemoteExceptionEvent):void {
+			trace("Calling service that will trigger an Exception");
+		   	albumService.getAlbumsNumber(helloResult, helloFault); // no faultCallback indicated here
 		}
 	}
 					

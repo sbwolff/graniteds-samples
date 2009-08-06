@@ -1,11 +1,13 @@
 package org.granite.tide.test.domain.model;
 
-public class User {
-	
+public class User {	
 
 	private String name;
 	private String login;
 	
+	public User() {
+		super();
+	}
 	
 	public User(String login, String name) {
 		this.login = login;

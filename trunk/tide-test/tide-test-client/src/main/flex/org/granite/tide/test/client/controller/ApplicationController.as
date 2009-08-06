@@ -1,10 +1,9 @@
 package org.granite.tide.test.client.controller
 {
-	import org.granite.tide.test.client.module.MainModule;
-	
 	import org.granite.tide.Tide;
 	import org.granite.tide.spring.Context;
 	import org.granite.tide.spring.Spring;
+	import org.granite.tide.test.client.module.MainModule;
 	
 	public class ApplicationController
 	{
@@ -22,6 +21,8 @@ package org.granite.tide.test.client.controller
 			tideContext = Spring.getInstance().getSpringContext();
 			var tide:Tide = Tide.getInstance();
 			
+			//Spring.getInstance().addExceptionHandler(ServerExceptionHandler);
+            
            	Spring.getInstance().addModule(MainModule);
 		}
 

@@ -9,6 +9,7 @@ public interface AlbumManager {
 	public Album createAlbum(long id);
 	public Album getAlbum(long id);
 	public List<Album> getAllAlbums();
+	public int getAlbumsNumber() throws Exception;
 	
 
 }

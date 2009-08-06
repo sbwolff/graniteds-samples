@@ -15,6 +15,10 @@ public class Track {
 	private Duration duration;
 	
 	private List<Artist> trackArtists;
+	
+	public Track() {
+		super();
+	}
 
 	public long getId() {
 		return id;

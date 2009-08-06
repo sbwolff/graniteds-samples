@@ -12,6 +12,5 @@
 		<tide-component instance-of="org.granite.tide.spring.security.Identity" />
 		<tide-component annotated-with="org.springframework.stereotype.Service" />
 	</tide-components>
-
-
+	
 </granite-config>

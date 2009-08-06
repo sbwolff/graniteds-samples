@@ -46,9 +46,7 @@
                 dispatchEvent(new LoginEvent());
             }
 		}
-
-
-			
+					
 		]]>
 	</mx:Script>
 	
@@ -59,8 +57,7 @@
 	    </site>
 	</mx:Model>
 	
-	<mx:Validator id="usernameVal" required="true" source="{loginModel}" property="username" listener="{username}"/>
-        
+	<mx:Validator id="usernameVal" required="true" source="{loginModel}" property="username" listener="{username}"/>        
     <mx:Validator id="passwordVal" required="true" source="{loginModel}" property="password" listener="{password}"/>
         	
 	<mx:Canvas width="100%" alpha="1.0" height="30" id="loginNavBar" styleName="navBar">

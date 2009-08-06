@@ -14,16 +14,8 @@ package org.granite.tide.test.domain.model {
     [Bindable]
     public class ArtistBase implements IExternalizable {
 
-        private var _forName:String;
         private var _id:Number;
         private var _name:String;
-
-        public function set forName(value:String):void {
-            _forName = value;
-        }
-        public function get forName():String {
-            return _forName;
-        }
 
         public function set id(value:Number):void {
             _id = value;
@@ -40,13 +32,11 @@ package org.granite.tide.test.domain.model {
         }
 
         public function readExternal(input:IDataInput):void {
-            _forName = input.readObject() as String;
             _id = function(o:*):Number { return (o is Number ? o as Number : Number.NaN) } (input.readObject());
             _name = input.readObject() as String;
         }
 
         public function writeExternal(output:IDataOutput):void {
-            output.writeObject(_forName);
             output.writeObject(_id);
             output.writeObject(_name);
         }
