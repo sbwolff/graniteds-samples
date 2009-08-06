@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300"
+	xmlns:tv="org.granite.tide.validators.*"
+	creationComplete="init()">
 	
 	<mx:Metadata>
 		[Name("albumUI")]
@@ -7,21 +9,44 @@
 	
 	<mx:Script>
 		<![CDATA[
+			import org.granite.tide.events.TideUIEvent;
+			import org.granite.tide.test.client.event.RemoteExceptionEvent;
 			import mx.collections.ArrayCollection;
 			
-			[In][Bindable]
+			[Bindable][In]
 			public var albums:ArrayCollection;
+			
+			public function init():void {
+				this.remoteExceptionBtn.addEventListener(MouseEvent.CLICK,onRemoteExceptionClick);
+				this.showArtistsBtn.addEventListener(MouseEvent.CLICK,onShowArtistsClick);			
+			}
+	        
+	        public function onRemoteExceptionClick(e:MouseEvent):void {
+				dispatchEvent(new RemoteExceptionEvent());
+			}
+			
+			public function onShowArtistsClick(e:MouseEvent):void {
+				dispatchEvent(new TideUIEvent('showArtists'));
+			}
+		
+			/*[Bindable] [In] [Out]
+			public var bookInstance:Book;*/
+			
 		]]>
 	</mx:Script>
+	
+	<!--<tv:TideEntityValidator id="teval" entity="{bookInstance}"
+        property="creditCardName" listener="{creditCardNameInput}"/>-->
 	
 	<mx:Panel label="Home" id="albumView" width="100%" height="100%">
 		<mx:Label text="Albums :" />
 		<mx:Label id="albumLabel" text="" />
-		
-		
-		<mx:List id="albumList" labelField="name" dataProvider="{albums}">
-		
-		</mx:List>
-		
+		<mx:List id="albumList" labelField="name" dataProvider="{albums}"></mx:List>
+		<mx:Button id="remoteExceptionBtn" label="Call remote method throwing an Exception"/>
+		<mx:Button label="Show artists" id="showArtistsBtn" />
+		<!--<mx:HBox width="100%">
+			<mx:TextInput id="creditCardNameInput" text="{bookInstance.creditCardName}" />
+			<mx:Button label="Validator"/>
+		</mx:HBox>-->
 	</mx:Panel>
 </mx:HBox>

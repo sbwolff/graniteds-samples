@@ -2,13 +2,21 @@ package org.granite.tide.test.domain.model;
 
 //@Entity
 public class Artist {
-	
+
 	//@Id
 	private long id;
 	
 	private String name;
 	
-	private String forName;
+	public Artist() {
+		super();
+	}
+	
+	public Artist(long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 	
 	public long getId() {
 		return id;
@@ -22,13 +30,5 @@ public class Artist {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getForName() {
-		return forName;
-	}
-	public void setForName(String forName) {
-		this.forName = forName;
-	}
-	
-	
 
 }

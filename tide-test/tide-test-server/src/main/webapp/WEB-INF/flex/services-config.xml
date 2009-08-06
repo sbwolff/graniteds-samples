@@ -28,9 +28,10 @@
      ! Declare springFactory service factory.
      !-->
 	<factories>
-		<factory id="tideSpringFactory" class="org.granite.tide.spring.SpringServiceFactory" />
+		<factory id="tideSpringFactory" class="org.granite.tide.spring.SpringServiceFactory">
+			<service-exception-handler>org.granite.tide.test.security.ServiceExceptionHandler</service-exception-handler>
+		</factory>
 	</factories>
-
 
 	<channels>
 		<channel-definition id="my-graniteamf"
@@ -40,6 +41,5 @@
 				class="flex.messaging.endpoints.AMFEndpoint" />
 		</channel-definition>
 	</channels>
-
 
 </services-config>

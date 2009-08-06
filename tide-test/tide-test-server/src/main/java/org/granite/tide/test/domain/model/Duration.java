@@ -8,6 +8,9 @@ public class Duration {
 	private int minutes;
 	private int seconds;
 	
+	public Duration() {
+		super();
+	}
 	
 	public Duration(int hours, int minutes, int seconds) {
 		super();
